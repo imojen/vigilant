@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test de Déploiement</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #121212;
+        color: white;
+      }
+      .container {
+        text-align: center;
+        padding: 2rem;
+        border: 2px solid #00ff00;
+        border-radius: 8px;
+        background-color: #1e1e1e;
+      }
+      h1 {
+        color: #00ff00;
+        animation: pulse 2s infinite;
+      }
+      p {
+        margin: 1rem 0;
+      }
+      a {
+        color: #00ffff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.7;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Page de Test - Déployée le 01/04/2025 à 01:50</h1>
+      <p>
+        Cette page est un test pour vérifier que le déploiement sur GitHub Pages
+        fonctionne correctement.
+      </p>
+      <p>Si vous voyez cette page, c'est que le déploiement est fonctionnel.</p>
+      <p>Retour à <a href="index.html">l'application principale</a></p>
+    </div>
+  </body>
+</html>
