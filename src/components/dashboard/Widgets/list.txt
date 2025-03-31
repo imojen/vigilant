@@ -1,0 +1,92 @@
+# Idées de Widgets pour Monitoring de Serveur
+
+## Widget PostgreSQL
+- **Métriques principales**: 
+  - Nombre de connexions actives
+  - Taux de hit du cache
+  - Requêtes/sec et temps moyen de réponse
+- **Visualisation**: Graphique temporel des performances + statistiques clés
+- **Données supplémentaires**:
+  - Espace disque utilisé par base
+  - Transactions actives
+  - Verrous (locks) en attente
+  - Statistiques sur les requêtes lentes
+
+## Widget Apache
+- **Métriques principales**: 
+  - Workers actifs
+  - Requêtes par seconde
+  - Consommation mémoire par processus
+- **Visualisation**: Compteur en temps réel + mini-histogramme
+- **Données supplémentaires**:
+  - Top 5 des vhosts les plus sollicités
+  - Distribution des codes d'état HTTP (200, 404, 500)
+  - Temps de réponse moyen
+  - Connexions en attente
+
+## Widget Top Processus
+- **Métriques principales**: 
+  - Top 5 processus par consommation CPU
+  - Top 5 processus par consommation mémoire
+- **Visualisation**: Liste avec barres horizontales
+- **Données supplémentaires**:
+  - PID et nom du processus
+  - % CPU et % mémoire
+  - Temps d'exécution
+  - Utilisateur propriétaire
+
+## Widget PHP-FPM
+- **Métriques principales**: 
+  - Pools actifs
+  - Processus en cours
+  - Mémoire utilisée
+- **Visualisation**: Compteurs en temps réel
+- **Données supplémentaires**:
+  - Utilisation mémoire des pools
+  - Temps d'exécution max/moyen
+  - Requêtes lentes
+  - Erreurs PHP récentes
+
+## Widget Réseau
+- **Métriques principales**: 
+  - Bande passante entrante/sortante
+  - Paquets par seconde
+- **Visualisation**: Graphique temps réel + indicateurs
+- **Données supplémentaires**:
+  - Connexions TCP établies
+  - Top 5 des IPs par nombre de connexions
+  - Paquets envoyés/reçus
+  - Ports les plus actifs
+
+## Widget Logs & Sécurité
+- **Métriques principales**: 
+  - Tentatives d'authentification
+  - Erreurs critiques
+  - Alertes de sécurité
+- **Visualisation**: Filtres par niveau + surlignage
+- **Données supplémentaires**:
+  - Tentatives de connexion échouées
+  - Modifications de fichiers sensibles
+  - Activités sudo
+  - Alertes d'intrusion
+
+## Widget Performances Disque I/O
+- **Métriques principales**:
+  - IOPS (opérations d'entrée/sortie par seconde)
+  - Temps de latence
+  - Débit de lecture/écriture
+- **Visualisation**: Graphiques temporels et jauges
+- **Données supplémentaires**:
+  - Taux d'utilisation par disque
+  - Files d'attente I/O
+  - Top des processus consommateurs d'I/O
+
+## Widget Services Système
+- **Métriques principales**:
+  - État des services critiques
+  - Temps d'activité
+- **Visualisation**: Liste avec indicateurs d'état
+- **Données supplémentaires**:
+  - Dépendances entre services
+  - Historique des redémarrages
+  - Consommation ressources par service

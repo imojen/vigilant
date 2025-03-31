@@ -1,0 +1,1935 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Styles spécifiques pour le composant App */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.app-content {
+  display: flex;
+  flex: 1;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.app-footer {
+  flex-shrink: 0;
+}
+
+/* Style pour la version single page */
+.single-page {
+  background-color: #f8fafc;
+  overflow: visible;
+  flex: 1;
+}
+
+.app-main {
+  flex: 1;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles pour le bouton et popup de configuration */
+.settings-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.settings-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settings-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Définition de la propriété personnalisée pour l'angle de rotation */
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Styles pour le popup de configuration style cyberpunk */
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 10, 30, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.settings-popup {
+  max-width: 450px;
+  width: 90%;
+  padding: 0;
+  background-color: var(--dark-bg);
+  border: 1px solid transparent;
+  max-height: 90vh;
+  animation: popup-slide 0.3s ease;
+  position: relative;
+  border-radius: 0;
+  z-index: 1;
+}
+
+/* Bordure lumineuse tournante */
+.settings-popup::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #032a35,
+    #1d118a 43%,
+    #391179
+  );
+  z-index: -1;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 5s linear infinite;
+  filter: blur(1.5px);
+}
+
+/* Animation de rotation de la bordure */
+@keyframes border-spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+/* Ligne dégradée en haut de la popup */
+.settings-popup::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-teal), var(--neon-purple));
+  z-index: 2;
+}
+
+/* Animation d'entrée du popup */
+@keyframes popup-slide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 238, 255, 0.3);
+  background: linear-gradient(
+    90deg,
+    rgba(5, 8, 36, 0.8) 0%,
+    rgba(10, 18, 66, 0.8) 100%
+  );
+  border-radius: 4px 4px 0 0;
+}
+
+.settings-popup-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--neon-teal);
+  text-shadow: 0 0 8px rgba(0, 229, 189, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--neon-teal);
+  text-shadow: 0 0 5px var(--neon-teal);
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  color: var(--neon-teal);
+  text-shadow: 0 0 8px var(--neon-teal);
+}
+
+.settings-popup-content {
+  padding: 1rem;
+  color: white;
+}
+
+/* Styles pour la page de configuration en version popup */
+.settings-page.popup-version {
+  padding: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-group {
+  background-color: transparent !important;
+  border-left: 2px solid var(--neon-teal);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0.5rem 1.5rem 0.5rem;
+}
+
+.settings-group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--neon-teal), transparent);
+}
+
+.settings-group:nth-child(2) {
+  border-left-color: var(--neon-purple);
+}
+
+.settings-group:nth-child(3) {
+  border-left-color: var(--neon-teal);
+}
+
+.settings-group h3 {
+  margin-top: 0;
+  margin-left: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--neon-teal);
+  text-shadow: 0 0 5px var(--neon-teal);
+  position: relative;
+  padding-left: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.form-group {
+  margin-bottom: 1rem !important;
+  width: 100% !important;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-actions {
+  margin-top: 1rem !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid rgba(0, 229, 189, 0.2) !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* Scrollbar personnalisé pour le popup */
+.settings-popup::-webkit-scrollbar {
+  width: 8px;
+}
+
+.settings-popup::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.settings-popup::-webkit-scrollbar-thumb {
+  background: rgba(0, 238, 255, 0.5);
+  border-radius: 3px;
+}
+
+.settings-popup::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 189, 0.7);
+  box-shadow: 0 0 8px var(--neon-teal);
+}
+
+/* Layout simplifiée (sans paramètres) */
+.main-container.simplified {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "dashboard logs";
+  height: 100%;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (min-width: 1024px) {
+  .main-container.simplified {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "dashboard"
+      "logs";
+    height: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-container.simplified {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "dashboard logs";
+    height: 100%;
+  }
+}
+
+.main-section {
+  overflow: visible;
+}
+
+.dashboard-section,
+.logs-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.logs-section {
+  grid-area: logs;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.logs-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* CYBERPUNK THEME STYLES */
+.cyberpunk-theme {
+  --neon-blue: #0ef;
+  --neon-pink: #ff00ff;
+  --neon-purple: #b700ff;
+  --neon-teal: #00e5bd;
+  --dark-bg: #0f0f1e;
+  --darker-bg: #050512;
+  --glow-effect: 0 0 10px rgba(0, 238, 255, 0.5);
+  --panel-border: 1px solid rgba(0, 238, 255, 0.3);
+  background-color: var(--darker-bg);
+}
+
+.cyberpunk-theme .app-header {
+  background: linear-gradient(90deg, #050824 0%, #0a1242 100%);
+  border-bottom: 1px solid var(--neon-teal);
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.3);
+}
+
+.cyberpunk-theme .app-header h1 {
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+  font-weight: 700;
+}
+
+.cyberpunk-theme .app-footer {
+  background: linear-gradient(90deg, #050824 0%, #0a1242 100%);
+  border-top: 1px solid var(--neon-teal);
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.3);
+}
+
+.cyberpunk-theme .settings-toggle {
+  color: var(--neon-teal);
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.7);
+}
+
+.cyberpunk-theme .settings-icon {
+  filter: drop-shadow(0 0 3px rgba(0, 238, 255, 0.7));
+}
+
+.cyberpunk-theme .app-main {
+  background-color: var(--dark-bg);
+}
+
+/* Styles modifiés pour enlever les encadrés et bordures */
+.cyberpunk-theme .card {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  position: relative;
+}
+
+.cyberpunk-theme .card::before,
+.cyberpunk-theme .card::after {
+  display: none;
+}
+
+.cyberpunk-theme .card-title {
+  color: var(--neon-teal);
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.5);
+}
+
+.cyberpunk-theme h2 {
+  color: var(--neon-teal);
+  text-shadow: 0 0 10px rgba(0, 229, 189, 0.5);
+}
+
+.cyberpunk-theme .progress {
+  background-color: rgba(14, 14, 40, 0.5);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cyberpunk-theme .progress-indicator {
+  background: linear-gradient(90deg, var(--neon-teal), var(--neon-purple));
+  height: 100%;
+  box-shadow: 0 0 8px var(--neon-teal);
+}
+
+.cyberpunk-theme .logs-container {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.cyberpunk-theme .table {
+  background-color: transparent;
+}
+
+.cyberpunk-theme .table-header {
+  background-color: rgba(11, 11, 35, 0.8);
+  border-bottom: 1px solid var(--neon-teal);
+}
+
+.cyberpunk-theme .table-row:hover {
+  background-color: rgba(0, 238, 255, 0.1);
+}
+
+.cyberpunk-theme ::-webkit-scrollbar-track {
+  background: rgba(15, 15, 40, 0.5);
+}
+
+.cyberpunk-theme ::-webkit-scrollbar-thumb {
+  background: rgba(0, 238, 255, 0.5);
+  border-radius: 3px;
+}
+
+.cyberpunk-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 189, 0.7);
+  box-shadow: 0 0 8px var(--neon-teal);
+}
+
+/* Cyber Gauge */
+.cyber-gauge-container {
+  position: relative;
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+.cyber-gauge-frame {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.cyber-gauge-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.gauge-progress {
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gauge-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+  filter: url(#crisp-text);
+}
+
+.text-neon-blue {
+  color: var(--neon-blue);
+}
+
+.text-neon-purple {
+  color: var(--neon-purple);
+}
+
+.text-neon-teal {
+  color: var(--neon-teal);
+}
+
+/* Styles modifiés pour enlever les encadrés */
+.cyber-details {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.cyber-gauge svg {
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* Style modifié pour le conteneur de progression */
+.cyber-progress-container {
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.cyber-progress {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, #000 0%, #000 100%);
+}
+
+.memory-bar {
+  width: 100%;
+}
+
+@keyframes pulse-glow {
+  0% {
+    filter: drop-shadow(0 0 2px var(--neon-teal));
+  }
+  50% {
+    filter: drop-shadow(0 0 4px var(--neon-teal));
+  }
+  100% {
+    filter: drop-shadow(0 0 2px var(--neon-teal));
+  }
+}
+
+.glow-text {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Améliorations visuelles cyberpunk */
+.cyberpunk-theme .card.widget {
+  backdrop-filter: none;
+}
+
+.cyberpunk-theme .cyber-gauge-frame {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.cyberpunk-theme .cyber-details {
+  background: transparent;
+}
+
+/* Effet d'hologramme pour les jauges */
+.gauge-progress {
+  stroke-linecap: round;
+  z-index: 3;
+  position: relative;
+}
+
+.gauge-progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 80%,
+    transparent 100%
+  );
+  animation: scan-line 2s linear infinite;
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Styles modifiés pour les cartes cyberpunk */
+.cyber-card {
+  background: transparent;
+  border: none;
+  position: relative;
+  overflow: visible;
+  clip-path: none;
+}
+
+.cyber-card::before,
+.cyber-card::after {
+  display: none;
+}
+
+.gauge-bg {
+  opacity: 0.3;
+}
+
+.glow-text-red {
+  text-shadow: 0 0 5px #ff4040;
+}
+
+.glow-text-amber {
+  text-shadow: 0 0 5px #ffbf00;
+}
+
+.glow-text-blue {
+  text-shadow: 0 0 5px var(--neon-teal);
+}
+
+/* Terminal Design */
+.cyber-terminal {
+  background-color: transparent;
+  color: #ffffff;
+  font-family: monospace;
+  border-radius: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.terminal-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--neon-teal);
+  text-shadow: 0 0 3px var(--neon-teal);
+}
+
+.terminal-icon {
+  display: inline-flex;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.terminal-button.minimize {
+  background-color: #ffbd44;
+}
+
+.terminal-button.maximize {
+  background-color: #00ca56;
+}
+
+.terminal-button.close {
+  background-color: #ff605c;
+}
+
+.cyber-table-header {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--neon-teal);
+  box-shadow: none;
+}
+
+.terminal-cell {
+  border-bottom: none;
+  padding: 4px 8px;
+  transition: background-color 0.2s;
+}
+
+.cyber-log-row:hover .terminal-cell {
+  background-color: rgba(0, 238, 255, 0.05);
+}
+
+.terminal-timestamp {
+  color: #77e5ec;
+}
+
+.terminal-service {
+  color: #c890f7;
+}
+
+.terminal-footer {
+  padding: 2px 12px;
+  margin-bottom: 0;
+  background-color: transparent;
+  border-top: none;
+  height: auto;
+  min-height: 0;
+}
+
+.terminal-prompt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 14px; /* Hauteur minimale pour le curseur */
+}
+
+.prompt-symbol {
+  color: var(--neon-teal);
+  font-weight: bold;
+}
+
+.prompt-cursor {
+  width: 8px;
+  height: 12px;
+  background-color: var(--neon-teal);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cyber-terminal-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  padding: 4px 10px;
+  border-radius: 0;
+  border: none;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00ff00;
+  border-radius: 50%;
+}
+
+.status-dot.pulse {
+  animation: pulse 2s infinite;
+}
+
+.status-text {
+  font-size: 12px;
+  font-weight: bold;
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(0, 255, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+  }
+}
+
+/* Cyber Status Indicators */
+.cyber-status-indicators {
+  margin-top: 10px;
+}
+
+.cyber-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  padding: 4px 8px;
+  border-radius: 0;
+  border: none;
+}
+
+.cyber-indicator .indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cyber-indicator span {
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.cyber-indicator.online .indicator-dot {
+  background-color: var(--neon-teal);
+  box-shadow: 0 0 5px var(--neon-teal);
+}
+
+.cyber-indicator.online span {
+  color: var(--neon-teal);
+}
+
+.cyber-indicator.active .indicator-dot {
+  background-color: var(--neon-pink);
+  box-shadow: 0 0 5px var(--neon-pink);
+}
+
+.cyber-indicator.active span {
+  color: var(--neon-pink);
+}
+
+/* Progress bar cyber style */
+.cyber-progress-container {
+  position: relative;
+  height: 12px;
+  margin: 4px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.cyber-progress {
+  height: 100% !important;
+  border-radius: 0 !important;
+  background-image: linear-gradient(90deg, var(--neon-teal), var(--neon-blue));
+  box-shadow: 0 0 10px rgba(0, 229, 189, 0.5);
+  position: relative;
+}
+
+.cyber-progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  animation: progress-shine 2s infinite linear;
+}
+
+@keyframes progress-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Espacements et disposition */
+.dashboard-widgets {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) !important;
+  grid-auto-rows: min-content;
+  gap: 8px !important;
+  overflow: visible !important;
+  padding: 8px !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Suppression des éléments qui causent des problèmes */
+.widget-column {
+  display: none !important;
+}
+
+/* Style des widgets */
+.widget {
+  min-height: auto !important;
+  height: fit-content !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 4px !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 2px !important;
+}
+
+/* Ajustement de l'affichage global */
+.main-container.simplified {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "dashboard logs";
+  height: 100%;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.dashboard-section {
+  grid-area: dashboard;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+.logs-section {
+  grid-area: logs;
+}
+
+/* Espacement interne des widgets */
+.widget .p-2 {
+  padding: 0.25rem !important;
+}
+
+.widget .py-2 {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.widget .px-3 {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+/* Rendre les barres de progression plus compactes */
+.cyber-progress-container {
+  height: 4px !important;
+}
+
+/* Ajustement pour les titres des widgets */
+.widget h3 {
+  margin: 0 !important;
+  padding: 2px !important;
+  font-size: 11px !important;
+}
+
+/* Mise en page globale - affichage des widgets en 2 colonnes dans la section de gauche */
+.dashboard {
+  overflow: visible !important;
+  padding: 0 !important;
+  height: auto;
+  width: 100%;
+}
+
+.main-section {
+  overflow: visible;
+}
+
+.single-page {
+  overflow: visible;
+}
+
+/* Styles pour les widgets sans bordures */
+.widget {
+  position: relative;
+  min-height: auto !important;
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.widget h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--neon-teal);
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.widget .widget-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Augmenter légèrement les espaces entre colonnes sur grands écrans */
+@media (min-width: 1280px) {
+  .dashboard-widgets {
+    column-gap: 2rem;
+  }
+}
+
+/* Styles pour les paramètres sans bordures */
+.settings-group {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.settings-group h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.cyber-select,
+.cyber-input {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid var(--neon-teal) !important;
+  color: white !important;
+  padding: 0.5rem !important;
+  width: 92% !important;
+  max-width: 92% !important;
+  font-size: 0.875rem !important;
+  box-shadow: 0 0 5px rgba(0, 229, 189, 0.3) !important;
+  transition: all 0.3s ease !important;
+  outline: none !important;
+  border-radius: 0 !important;
+  margin-left: 0.5rem;
+}
+
+.cyber-select:focus,
+.cyber-input:focus {
+  border-color: var(--neon-blue) !important;
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5) !important;
+}
+
+.form-group {
+  margin-bottom: 1rem !important;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-group.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.form-group.checkbox input {
+  margin-right: 0.5rem;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+  cursor: pointer;
+}
+
+.form-group.checkbox input:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--neon-teal);
+  font-size: 12px;
+}
+
+.form-group.checkbox label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.btn-save {
+  background-color: transparent;
+  color: var(--neon-teal);
+  border: 1px solid var(--neon-teal);
+  border-radius: 0;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-save:hover {
+  background-color: rgba(0, 238, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+}
+
+.btn-save::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 238, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s;
+}
+
+.btn-save:hover::before {
+  left: 100%;
+}
+
+/* HUD Cyberpunk Elements */
+.dashboard {
+  padding: 0 !important;
+  height: auto;
+  overflow: visible;
+}
+
+.dashboard h2 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: var(--neon-teal);
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.widget {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.widget::before,
+.widget::after {
+  display: none;
+}
+
+.widget h3 {
+  font-size: 12px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.widget h3::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background-color: currentColor;
+  box-shadow: 0 0 5px currentColor;
+}
+
+/* Cyber Progress Bar HUD Style */
+.cyber-progress-bar {
+  margin-bottom: 12px;
+}
+
+.cyber-progress-container {
+  position: relative;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.cyber-progress-container::before,
+.cyber-progress-container::after {
+  display: none;
+}
+
+.cyber-progress-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.05) 2px,
+    rgba(255, 255, 255, 0.05) 4px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cyber-progress {
+  height: 100%;
+  border-radius: 0;
+  background-size: 15px 15px !important;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 5px,
+    transparent 5px,
+    transparent 10px
+  ) !important;
+  position: relative;
+  transition: width 0.3s ease;
+  overflow: visible !important;
+}
+
+.cyber-progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px currentColor, 0 0 5px currentColor;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Compact Info Sections */
+.cyber-details {
+  font-size: 10px !important;
+  margin-top: 8px !important;
+  background: transparent;
+  border-radius: 0;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  border: none;
+}
+
+.cyber-details::before,
+.cyber-details::after {
+  display: none;
+}
+
+.cyber-details > div {
+  padding: 2px 5px;
+  border-left: none;
+}
+
+.cyber-details .full-width {
+  grid-column: span 2;
+}
+
+/* Stylized Value Displays */
+.hud-value {
+  position: relative;
+  display: inline-block;
+  padding: 1px 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  border-left: 2px solid currentColor;
+  font-family: "Rajdhani", monospace;
+  font-weight: bold;
+}
+
+.storage-bars {
+  padding: 4px;
+  margin-top: 2px;
+  background: transparent;
+  border-radius: 0;
+}
+
+.storage-item {
+  margin-bottom: 6px;
+}
+
+.storage-item:last-child {
+  margin-bottom: 0;
+}
+
+.hud-grid-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.hud-info-item {
+  background: transparent;
+  padding: 4px 5px;
+  border-radius: 0;
+  border-left: 1px solid rgba(0, 200, 255, 0.5);
+}
+
+/* Indicator Dots */
+.cyber-status-indicators {
+  background: transparent;
+  border-radius: 0;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4px !important;
+  border: none;
+}
+
+.cyber-indicator {
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.indicator-dot {
+  width: 6px;
+  height: 6px;
+  animation: pulse 1.5s infinite;
+}
+
+/* Lines and Grid Design */
+.hud-grid-lines {
+  display: none;
+}
+
+/* HUD Corner Accents */
+.widget::before,
+.cyber-details::before,
+.cyber-progress-container::before {
+  display: none;
+}
+
+.widget::after,
+.cyber-details::after,
+.cyber-progress-container::after {
+  display: none;
+}
+
+/* Responsive grid */
+@media (max-width: 640px) {
+  .dashboard-widgets {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Blinking and scanning effects */
+@keyframes scan-line {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.scan-effect {
+  display: none;
+}
+
+/* Segmented progress bar style */
+.segmented-progress {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.segment {
+  flex: 1;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.segment.active {
+  background: var(--neon-teal);
+  box-shadow: 0 0 5px var(--neon-teal);
+}
+
+.segment.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Styles pour l'interface HUD ultra compacte */
+.bg-neon-teal {
+  background-color: var(--neon-teal);
+}
+
+.bg-neon-pink {
+  background-color: var(--neon-pink);
+}
+
+.text-neon-teal {
+  color: var(--neon-teal);
+}
+
+.text-neon-purple {
+  color: var(--neon-purple);
+}
+
+.text-neon-pink {
+  color: var(--neon-pink);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 4px currentColor;
+}
+
+/* Ajustements pour réduire les espaces vides */
+.widget {
+  min-height: auto !important;
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+}
+
+.dashboard-widgets {
+  grid-template-rows: min-content;
+  gap: 0.5rem !important;
+}
+
+/* Grille adaptée pour l'image de référence */
+@media (min-width: 768px) {
+  .dashboard-widgets {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Modifier le style des points avant les titres de section */
+.widget h3::before {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Barres de progression */
+.h-2 {
+  height: 0.5rem;
+}
+
+/* Ajustement des marges et paddings */
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
+.min-h-0 {
+  min-height: 0;
+}
+
+/* Ajustements typographiques */
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-\[9px\] {
+  font-size: 9px;
+}
+
+.text-\[10px\] {
+  font-size: 10px;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+/* Couleurs de texte */
+.text-white {
+  color: white;
+}
+
+.text-gray-400 {
+  color: rgba(156, 163, 175, 1);
+}
+
+.text-gray-500 {
+  color: rgba(107, 114, 128, 1);
+}
+
+/* Layout */
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-x-4 {
+  column-gap: 1rem;
+}
+
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-x-1 > * + * {
+  margin-left: 0.25rem;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+.w-1\.5 {
+  width: 0.375rem;
+}
+
+.h-1\.5 {
+  height: 0.375rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.bg-opacity-60 {
+  --tw-bg-opacity: 0.6;
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+}
+
+/* Forcer l'affichage des widgets en 2 colonnes dans la section Système */
+.dashboard .dashboard-widgets {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  grid-auto-rows: min-content !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 10px !important;
+}
+
+/* Garantir que chaque widget prend toute la largeur de sa cellule de grille */
+.dashboard .dashboard-widgets > * {
+  width: 100% !important;
+  grid-column: span 1 !important;
+}
+
+/* Supprimer tous les styles qui pourraient interférer */
+.widget-column,
+.row-span-2 {
+  display: none !important;
+}
+
+/* Désactiver les media queries qui pourraient surcharger notre grille */
+@media (max-width: 768px) {
+  .dashboard .dashboard-widgets {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard .dashboard-widgets {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Réduire les espaces entre widgets pour plus de compacité */
+.widget {
+  margin: 0 !important;
+  padding: 4px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Contenu des widgets plus compact */
+.widget h3 {
+  font-size: 10px !important;
+  margin: 0 !important;
+  padding: 2px 4px !important;
+}
+
+.cyber-progress-container {
+  height: 4px !important;
+  margin: 2px 0 !important;
+}
+
+/* Cyber button style */
+.cyber-button {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: var(--neon-teal);
+  border: 1px solid var(--neon-teal);
+  box-shadow: 0 0 8px rgba(0, 229, 189, 0.4);
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cyber-button:hover {
+  background-color: rgba(0, 229, 189, 0.15);
+  box-shadow: 0 0 12px rgba(0, 229, 189, 0.7);
+  text-shadow: 0 0 5px var(--neon-teal);
+}
+
+.cyber-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 229, 189, 0.2) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s ease;
+}
+
+.cyber-button:hover::before {
+  left: 100%;
+}
+
+/* Animation pour l'apparition du tooltip */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation de scan pour le tooltip */
+@keyframes tooltipScan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+/* Animation pour léger scintillement du texte */
+@keyframes textGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 4px var(--neon-blue);
+  }
+  50% {
+    text-shadow: 0 0 6px var(--neon-blue), 0 0 10px rgba(0, 238, 255, 0.3);
+  }
+}
+
+.cyber-tooltip {
+  position: fixed;
+  background-color: rgba(5, 8, 36, 0.95);
+  color: #00eeff;
+  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 15px 2px var(--neon-blue),
+    inset 0 0 10px rgba(0, 238, 255, 0.3);
+  padding: 10px 15px;
+  border-radius: 0;
+  font-family: monospace;
+  font-size: 14px;
+  max-height: 200px;
+  overflow-y: auto;
+  word-break: break-word;
+  z-index: 100000 !important;
+  pointer-events: none;
+  animation: fadeIn 0.3s forwards;
+  line-height: 1.5;
+  opacity: 1;
+}
+
+/* Personnalisation de la scrollbar du tooltip */
+.cyber-tooltip::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cyber-tooltip::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.cyber-tooltip::-webkit-scrollbar-thumb {
+  background: rgba(0, 238, 255, 0.5);
+  border-radius: 2px;
+}
+
+.cyber-tooltip::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 189, 0.7);
+  box-shadow: 0 0 4px var(--neon-teal);
+}
+
+.cyber-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 238, 255, 0.1) 45%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: tooltipScan 2s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Styles des bordures lumineuses */
+
+.logs-list {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(
+    100vh - 100px
+  ); /* Tenir compte du header et de l'en-tête des logs */
+}
+
+.logs-list .cyber-table {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logs-list .cyber-table tbody {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0; /* Important pour que flex puisse réduire en-dessous de sa taille de contenu */
+}

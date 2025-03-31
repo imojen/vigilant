@@ -1,0 +1,71 @@
+{
+  "api": {
+    "baseUrl": "http://localhost:3000/api",
+    "endpoints": {
+      "system": "/system",
+      "cpu": "/cpu",
+      "memory": "/memory",
+      "storage": "/storage",
+      "postgresql": "/postgresql",
+      "apache": "/apache",
+      "processes": "/processes",
+      "logs": "/logs"
+    },
+    "refreshInterval": 5000
+  },
+  "dashboard": {
+    "widgets": {
+      "cpu": {
+        "enabled": true,
+        "refreshInterval": 3000,
+        "alertThreshold": 80
+      },
+      "memory": {
+        "enabled": true,
+        "refreshInterval": 3000,
+        "alertThreshold": 90
+      },
+      "storage": {
+        "enabled": true,
+        "refreshInterval": 10000,
+        "alertThreshold": 85
+      },
+      "logs": {
+        "enabled": true,
+        "refreshInterval": 5000,
+        "maxEntries": 100
+      },
+      "postgresql": {
+        "enabled": true,
+        "refreshInterval": 5000,
+        "alertThreshold": 80
+      },
+      "apache": {
+        "enabled": true,
+        "refreshInterval": 5000,
+        "alertThreshold": 80
+      },
+      "processes": {
+        "enabled": true,
+        "refreshInterval": 3000,
+        "maxEntries": 5
+      }
+    }
+  },
+  "alerts": {
+    "enabled": true,
+    "levels": {
+      "warning": 70,
+      "critical": 90
+    },
+    "notifications": {
+      "desktop": true,
+      "sound": true
+    }
+  },
+  "ui": {
+    "theme": "light",
+    "language": "fr",
+    "animationsEnabled": true
+  }
+}
