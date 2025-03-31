@@ -1933,3 +1933,28 @@
   overflow-y: auto;
   min-height: 0; /* Important pour que flex puisse réduire en-dessous de sa taille de contenu */
 }
+
+.mock-indicator {
+  position: absolute;
+  top: 5px;
+  right: 50px;
+  background-color: rgba(255, 0, 128, 0.7);
+  color: white;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}

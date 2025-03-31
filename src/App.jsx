@@ -17,6 +17,7 @@ function App() {
     <div className="app dark cyberpunk-theme">
       <header className="app-header">
         <h1>Vigilant Observer</h1>
+        <div className="mock-indicator">DONNÉES SIMULÉES</div>
         <button
           className="settings-toggle"
           onClick={toggleSettings}
