@@ -1,14 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vigilant/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vigilant Project</title>
-    <script type="module" crossorigin src="/vigilant/assets/index-BdeGsD_U.js"></script>
-    <link rel="stylesheet" crossorigin href="/vigilant/assets/index-D3Mlx5et.css">
+    <meta http-equiv="refresh" content="3; url='test.html'" />
+    <title>Vigilant - Page temporaire</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #050512;
+        color: white;
+        text-align: center;
+      }
+      .container {
+        padding: 2rem;
+        border: 2px solid #00ff00;
+        border-radius: 8px;
+        background-color: #0f0f1e;
+        max-width: 80%;
+      }
+      h1 {
+        color: #00ff00;
+        animation: pulse 2s infinite;
+      }
+      p {
+        margin: 1rem 0;
+        color: #00eeff;
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.7;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="container">
+      <h1>DÉPLOIEMENT FORCÉ</h1>
+      <p>
+        Cette page est une redirection temporaire pour tester le déploiement
+        GitHub Pages.
+      </p>
+      <p>Vous serez redirigé vers la page de test dans 3 secondes...</p>
+      <p>Date et heure de déploiement : 01/04/2025 à 02:10</p>
+    </div>
   </body>
 </html>

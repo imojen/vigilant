@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test de Déploiement</title>
+    <title>Vigilant - Test de déploiement</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -12,29 +12,45 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-color: #121212;
+        background-color: #050512;
         color: white;
+        text-align: center;
       }
       .container {
-        text-align: center;
         padding: 2rem;
-        border: 2px solid #00ff00;
+        border: 3px solid #ff00ff;
         border-radius: 8px;
-        background-color: #1e1e1e;
+        background-color: #0f0f1e;
+        max-width: 80%;
       }
       h1 {
-        color: #00ff00;
+        color: #ff00ff;
         animation: pulse 2s infinite;
       }
       p {
         margin: 1rem 0;
+        color: #00eeff;
       }
-      a {
-        color: #00ffff;
+      .big-text {
+        font-size: 24px;
+        font-weight: bold;
+        color: #00ff00;
+        margin: 20px 0;
+      }
+      .cta {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #00eeff;
+        color: #000;
         text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: all 0.3s;
       }
-      a:hover {
-        text-decoration: underline;
+      .cta:hover {
+        background-color: #00ff00;
+        transform: scale(1.05);
       }
       @keyframes pulse {
         0% {
