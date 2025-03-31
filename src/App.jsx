@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="app dark cyberpunk-theme">
       <header className="app-header">
-        <h1>Vigilant Observer</h1>
+        <h1>Vigilant Observer - MODE DEMO</h1>
         <div className="mock-indicator">DONNÉES SIMULÉES</div>
         <button
           className="settings-toggle"
