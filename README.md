@@ -66,4 +66,20 @@ La configuration centralisée dans `src/config/config.json` permet de :
 
 ## 💻 Déploiement
 
+### GitHub Pages
+
+L'application est configurée pour être déployée sur GitHub Pages :
+
+1. Le déploiement automatique est configuré via GitHub Actions
+2. À chaque push sur la branche `main`, l'application est automatiquement déployée
+3. L'application est accessible à l'adresse : https://imojen.github.io/vigilant/
+
+Pour un déploiement manuel :
+
+```bash
+npm run deploy
+```
+
+Cette commande construit l'application et la déploie sur la branche `gh-pages`.
+
 Application déployable sur Vercel ou autre plateforme de déploiement
